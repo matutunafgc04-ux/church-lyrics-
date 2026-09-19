@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Church Lyrics Library</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ======================================
+         HEADER
+    ======================================= -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🎵
+            </div>
+
+            <div>
+                <h1>Church Lyrics</h1>
+
+                <p>
+                    Worship Song Library
+                </p>
+            </div>
+
+        </div>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+        >
+            ☰
+        </button>
+
+
+        <nav id="navMenu">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#songs">
+                Songs
+            </a>
+
+            <a href="#addSong">
+                Add Song
+            </a>
+
+            <a href="#admin">
+                Manage
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ======================================
+         MAIN
+    ======================================= -->
+
+    <main>
+
+
+        <!-- ==================================
+             HOME
+        =================================== -->
+
+        <section
+            id="home"
+            class="hero"
+        >
+
+            <div class="hero-content">
+
+                <p class="welcome">
+                    MATUTUNA FOURSQUARE GOSPEL CHURCH
+                </p>
+
+
+                <h2>
+                    Worship through
+                    <span>every song.</span>
+                </h2>
+
+
+                <p class="description">
+                    Quickly access worship songs and lyrics
+                    for your church service.
+                </p>
+
+
+                <div class="search-box">
+
+                    <span>
+                        🔎
+                    </span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search song title or artist..."
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================
+             SONG LIBRARY
+        =================================== -->
+
+        <section
+            id="songs"
+            class="songs-section"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <p class="small-title">
+                        LYRICS LIBRARY
+                    </p>
+
+                    <h2>
+                        Worship Songs
+                    </h2>
+
+                </div>
+
+
+                <select
+                    id="categoryFilter"
+                    class="category-select"
+                >
+
+                    <option value="all">
+                        All Songs
+                    </option>
+
+                    <option value="Praise">
+                        Praise
+                    </option>
+
+                    <option value="Worship">
+                        Worship
+                    </option>
+
+                    <option value="Hymn">
+                        Hymn
+                    </option>
+
+                    <option value="Youth">
+                        Youth
+                    </option>
+
+                    <option value="Special">
+                        Special Song
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="songList"
+                class="song-list"
+            >
+            </div>
+
+
+            <div
+                id="noSongs"
+                class="no-songs"
+            >
+
+                <div>
+                    🎵
+                </div>
+
+                <h3>
+                    No songs found
+                </h3>
+
+                <p>
+                    Try another search or category.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================
+             LYRICS VIEWER
+        =================================== -->
+
+        <section
+            id="lyricsViewer"
+            class="lyrics-viewer"
+        >
+
+            <div class="lyrics-top">
+
+                <button
+                    class="back-btn"
+                    id="backBtn"
+                >
+                    ← Back
+                </button>
+
+
+                <button
+                    class="favorite-view-btn"
+                    id="viewerFavoriteBtn"
+                >
+                    ☆
+                </button>
+
+            </div>
+
+
+            <div class="lyrics-header">
+
+                <p id="lyricsCategory">
+                    WORSHIP
+                </p>
+
+
+                <h2 id="lyricsTitle">
+                    Song Title
+                </h2>
+
+
+                <p id="lyricsArtist">
+                    Artist
+                </p>
+
+            </div>
+
+
+            <!-- ACTUAL LYRICS -->
+
+            <div
+                id="lyricsContent"
+                class="lyrics-content"
+            >
+            </div>
+
+
+            <!-- CONTROLS -->
+
+            <div class="lyrics-controls">
+
+                <button
+                    id="decreaseFont"
+                    title="Decrease text size"
+                >
+                    A−
+                </button>
+
+
+                <button
+                    id="increaseFont"
+                    title="Increase text size"
+                >
+                    A+
+                </button>
+
+
+                <button
+                    id="copyLyricsBtn"
+                    title="Copy lyrics"
+                >
+                    📋
+                </button>
+
+
+                <button
+                    id="lyricsDarkBtn"
+                    title="Toggle light/dark"
+                >
+                    ☀
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================
+             ADD SONG
+        =================================== -->
+
+        <section
+            id="addSong"
+            class="add-song-section"
+        >
+
+            <div class="add-song-card">
+
+                <p class="small-title">
+                    SONG MANAGEMENT
+                </p>
+
+
+                <h2 id="formTitle">
+                    Add New Song
+                </h2>
+
+
+                <p class="form-description">
+                    Add or update songs in the church lyrics library.
+                </p>
+
+
+                <form id="songForm">
+
+
+                    <input
+                        type="hidden"
+                        id="songId"
+                    >
+
+
+                    <!-- TITLE -->
+
+                    <div class="form-group">
+
+                        <label for="songTitle">
+                            Song Title
+                        </label>
+
+                        <input
+                            type="text"
+                            id="songTitle"
+                            placeholder="Example: Goodness of God"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- ARTIST -->
+
+                    <div class="form-group">
+
+                        <label for="songArtist">
+                            Artist / Singer
+                        </label>
+
+                        <input
+                            type="text"
+                            id="songArtist"
+                            placeholder="Example: Bethel Music"
+                        >
+
+                    </div>
+
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="form-group">
+
+                        <label for="songCategory">
+                            Category
+                        </label>
+
+                        <select
+                            id="songCategory"
+                            required
+                        >
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="Praise">
+                                Praise
+                            </option>
+
+                            <option value="Worship">
+                                Worship
+                            </option>
+
+                            <option value="Hymn">
+                                Hymn
+                            </option>
+
+                            <option value="Youth">
+                                Youth
+                            </option>
+
+                            <option value="Special">
+                                Special Song
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- LYRICS -->
+
+                    <div class="form-group">
+
+                        <label for="songLyrics">
+                            Lyrics
+                        </label>
+
+                        <textarea
+                            id="songLyrics"
+                            placeholder="Paste or type the lyrics here..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="form-buttons">
+
+                        <button
+                            type="submit"
+                            class="save-song-btn"
+                            id="saveSongBtn"
+                        >
+                            ➕ Save Song
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="cancel-btn"
+                            id="cancelEditBtn"
+                        >
+                            Cancel Edit
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================
+             MANAGE
+        =================================== -->
+
+        <section
+            id="admin"
+            class="manage-section"
+        >
+
+            <div class="manage-container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="small-title">
+                            ADMIN
+                        </p>
+
+                        <h2>
+                            Manage Songs
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        id="songCount"
+                        class="song-count"
+                    >
+                        0 songs
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="manageList"
+                    class="manage-list"
+                >
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================
+             INFO
+        =================================== -->
+
+        <section class="info-section">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ⭐
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Favorite Songs
+                    </h3>
+
+                    <p>
+                        Mark frequently used songs
+                        as favorites for faster access.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ======================================
+         MOBILE NAV
+    ======================================= -->
+
+    <div class="mobile-nav">
+
+        <a href="#home">
+
+            <span>
+                🏠
+            </span>
+
+            <small>
+                Home
+            </small>
+
+        </a>
+
+
+        <a href="#songs">
+
+            <span>
+                🎵
+            </span>
+
+            <small>
+                Songs
+            </small>
+
+        </a>
+
+
+        <a href="#addSong">
+
+            <span>
+                ➕
+            </span>
+
+            <small>
+                Add
+            </small>
+
+        </a>
+
+
+        <a href="#admin">
+
+            <span>
+                ⚙️
+            </span>
+
+            <small>
+                Manage
+            </small>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- ======================================
+         TOAST
+    ======================================= -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+    </div>
+
+
+
+    <!-- ======================================
+         FOOTER
+    ======================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Matutuna Foursquare Gospel Church
+        </p>
+
+        <p>
+            Church Lyrics Library
+        </p>
+
+    </footer>
+
+
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
